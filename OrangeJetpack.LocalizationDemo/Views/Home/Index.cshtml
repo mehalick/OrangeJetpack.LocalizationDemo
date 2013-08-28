@@ -1,0 +1,26 @@
+﻿@model IEnumerable<OrangeJetpack.LocalizationDemo.Models.Planet>
+
+@{
+    ViewBag.Title = "Planets";
+}
+
+<h1>Planets</h1>
+
+<p>
+    @Html.ActionLink("Add New Planet", "AddPlanet")
+</p>
+
+<table class="table table-striped table-bordered table-condensed">
+    <tr>
+        <th style="width: 1%; white-space: nowrap;">@Html.DisplayNameFor(model => model.PlanetId)</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.PlanetId)</td>
+        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+    </tr>
+}
+
+</table>

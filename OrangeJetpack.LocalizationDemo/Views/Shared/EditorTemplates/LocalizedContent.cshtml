@@ -1,0 +1,21 @@
+﻿@using OrangeJetpack.Localization;
+
+@{
+    var localizedContents = LocalizedContent.Deserialize(Model);
+}
+
+<div class="localized-content">
+    <ul>
+        @for (var i = 0; i < localizedContents.Length; i++)
+        {
+            var inputNamePrefix = string.Format("{0}[{1}]", ViewData.ModelMetadata.PropertyName, i);
+            <li>
+                <input type="hidden" name="@(inputNamePrefix).Key" value="@localizedContents[i].Key" />
+                <div class="input-append">
+                  <input class="localized-input" type="text" name="@(inputNamePrefix).Value" value="@localizedContents[i].Value" data-language="@localizedContents[i].Key" />
+                  <span class="add-on">@localizedContents[i].Key</span>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
